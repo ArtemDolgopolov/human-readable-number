@@ -20,15 +20,15 @@ module.exports = function toReadable(number) {
 
     if ((strToNum % 100) == 0) { return (humanInts[2][Math.floor(strToNum / 100)]); }
 
-    let v = strToNum - (strToNum - (strToNum % 100));
+    let overHundred = strToNum - (strToNum - (strToNum % 100));
 
-    if (v < 20) {
-        return (humanInts[2][Math.floor(strToNum / 100)] + ' ' + humanInts[0][v]);
+    if (overHundred < 20) {
+        return (humanInts[2][Math.floor(strToNum / 100)] + ' ' + humanInts[0][overHundred]);
     } else {
-        if (v % 10 == 0) {
-            return (humanInts[2][Math.floor(strToNum / 100)] + ' ' + humanInts[1][Math.floor(v / 10)]);
+        if (overHundred % 10 == 0) {
+            return (humanInts[2][Math.floor(strToNum / 100)] + ' ' + humanInts[1][Math.floor(overHundred / 10)]);
         } else {
-            return (humanInts[2][Math.floor(strToNum / 100)] + ' ' + humanInts[1][Math.floor(v / 10)] + ' ' + humanInts[0][v % 10]);
+            return (humanInts[2][Math.floor(strToNum / 100)] + ' ' + humanInts[1][Math.floor(overHundred / 10)] + ' ' + humanInts[0][overHundred % 10]);
         }
     }
 }
